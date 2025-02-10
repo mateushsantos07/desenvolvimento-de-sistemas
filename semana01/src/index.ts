@@ -9,6 +9,10 @@ import exercicio07 from './exercicio07';
 import exercicio08 from './exercicio08';
 import exercicio09 from './exercicio09';
 import exercicio10 from './exercicio10';
+import exercicio11 from './exercicio11';
+import exercicio12 from './exercicio12';
+import exercicio13 from './exercicio13';
+import exercicio14 from './exercicio14';
 
 var opcao = leia.keyInSelect([
     "Exercicio 01",
@@ -23,6 +27,8 @@ var opcao = leia.keyInSelect([
     "Exercicio 10",
     "Exercicio 11",
     "Exercicio 12",
+    "Exercicio 13",
+    "Exercicio 14",
 ]) + 1;
 
 switch (opcao) {
@@ -56,10 +62,16 @@ switch (opcao) {
     case 10:
         exercicio10();
         break;
-    case 9:
-        exercicio;
+    case 11:
+        exercicio11();
         break;
-    case 9:
-        exercicio;
+    case 12:
+        exercicio12();
+        break;
+    case 13:
+        exercicio13();
+        break;
+    case 14:
+        exercicio14();
         break;
 }
