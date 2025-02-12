@@ -3,7 +3,7 @@ export default function exercicio02() {
 
     let numero = leia.questionInt('informe um numero ')
 
-    for (let i = 0; numero > i; i--) {
+    for (let i = numero; i >= 0; i--) {
         console.log(i)
     }
 
