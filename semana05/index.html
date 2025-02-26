@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Nomes</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h1>Grafico de frequência de nomes</h1>
+    <input type="text" id="name" placeholder="Buscar um nome">
+    <button onclick="loadNames()">Buscar</button>
+
+    <div class="chart-container">
+        <canvas id="chart">
+
+        </canvas>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
