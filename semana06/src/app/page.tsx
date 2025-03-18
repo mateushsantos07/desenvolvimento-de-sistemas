@@ -1,27 +1,24 @@
 'use client'
+
 import { useState } from "react";
 import "./home.css";
 
-
 export default function Home() {
-  //let contador = 0;
-  const [contador, setContador] = useState<number>(0);
+  const [contador, setContador] = useState<number>(0)
 
   function incrementar() {
-    console.log("Foi executada")
-    setContador(contador + 1)
-    console.log(`Contador ${contador}`)
+    setContador(contador + 1);
   }
+
   function resetar() {
     setContador(0);
   }
 
-return (
-    <div className="container">
+  return (
+    <div>
       <h1>Contador: {contador}</h1>
-      <button onClick={() => incrementar()}>Incrementar</button>
-      <button onClick={() => resetar()}>Resetar</button>
+      <button onClick={incrementar}>INCREMENTAR</button>
+      <button onClick={resetar}>RESETAR</button>
     </div>
-    
   );
 }

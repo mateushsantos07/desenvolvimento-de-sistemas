@@ -1,34 +1,59 @@
 'use client'
+
 import { useState } from "react";
 import "./styles.css";
-export default function login(){
-    const [email, setEmail] = useState<string> ('')
-    const [password, setPassword] = useState<string> ('')
+import { useRouter } from "next/navigation";
+import Header from "@/components/Header";
 
-    function handleSubmit(){
-        console.log(email)
-        console.log(password)
+
+export default function Login() {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const disabledButton = (!email || !(password.length > 8));
+
+    const router = useRouter();
+
+    async function handleSubmit() {
+        // EXEMPLO REQUISIÇÃO
+        // const respose = await fetch("http://meu-dominio/login", {
+        //     method: "POST",
+        //     body: {
+        //         email,
+        //         password
+        //     }as any,
+        // })
+
+        router.replace("/");
     }
 
-    return(
+    return (
         <div className="container">
             <div className="form">
                 <h2>Login</h2>
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     placeholder="E-mail"
                     className="input"
-                    value = {email}
+                    value={email}
                     onChange={(event) => setEmail(event.target.value)}
                 />
-                <input 
-                    type="password" 
-                    placeholder="Password" 
+
+                <input
+                    type="password"
+                    placeholder="Password"
                     className="input"
-                    value = {password}
+                    value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                <button className="button" onClick={handleSubmit}>Entrar</button>
+
+                <button
+                    className="button"
+                    onClick={handleSubmit}
+                    disabled={disabledButton}
+                >
+                    Entrar
+                </button>
             </div>
         </div>
     )
