@@ -1,44 +1,67 @@
+'use client'
+import { FormEvent, useState } from "react";
 import Avatar from "../Avatar";
 import "./styles.css";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 type Author = {
     name: string;
-            role: string;
-            avatarUrl: string;
+    role: string;
+    avatarUrl: string;
 }
 type PostProps = {
     post: {
         author: Author;
-        publishAt: Date;
+        publishedAt: Date;
         content: string;
     }
 }
 
 export default function Post({ post }: PostProps) {
+    const [newComment, setNewComment] = useState<string>('');
+
+    function handleCreateNewComment(event: FormEvent) {
+        event.preventDefault();
+        alert(newComment)
+    } 
+
+    const dateFormat = formatDistanceToNow(post.publishedAt, {
+        locale: ptBR,
+        addSuffix: true
+    })
+    
     return (
         
         <article className="post">
             <header>
             <div className = "author">
-                <Avatar src={"https://github.com/mateushsantos07.png"} hasBorder/>
+                <Avatar src={post.author.avatarUrl} hasBorder/>
                     <div className="author-info">
-                        <strong>Mateus Henrique</strong>
-                        <span>Desenvolvedor</span>
+                        <strong>{post.author.name}</strong>
+                        <span>{post.author.role}</span>
 
                     </div>
                 </div>
-                <time> Públicado há 2 horas</time>
+                <time>
+                    {dateFormat}
+                </time>
             </header>
 
             <div className="content">
-                <p>Bom dia, ótimo trabalho gostaria de saber se vocês publicariam mais sobre.</p>
+                <p>
+                    {post.content}
+                </p>
             </div>
 
-            <form className="form">
+            <form className="form" onSubmit={handleCreateNewComment}>
                 <strong>Deixe seu comentário </strong>
 
-                <textarea placeholder="Deixe um comentário..."/>
-
+                <textarea placeholder="Deixe um comentário..."
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+                />
+                
                 <footer>
                     <button className="footer-button">
                         Publicar
