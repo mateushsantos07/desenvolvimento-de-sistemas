@@ -56,9 +56,9 @@ export default function Post({ post, setPost }: PostProps) {
             comment: newComment,
             publishedAt: new Date().toISOString(),
             author: {
-                name: "Gustavo Souza",
-                role: "Full-stack balbalba",
-                avatarUrl: "http://github.com/gustavoroberto1.png"
+                name: "Mateus Santos",
+                role: "Estudante",
+                avatarUrl: "http://github.com/mateushsantos07.png"
             }
         }
 
