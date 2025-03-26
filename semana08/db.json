@@ -8,7 +8,20 @@
         "avatarUrl": "https://github.com/benedettmanu.png"
       },
       "publishedAt": "2025-03-18T12:00:00Z",
-      "content": "Hoje compartilhei algumas dicas sobre React no meu blog! Falei sobre como utilizar hooks personalizados para gerenciar estado de forma eficiente e evitar repetições de código. Também mencionei a importância da organização dos componentes e como utilizar o Context API para melhorar a comunicação entre eles. Confira o post completo no meu site!"
+      "content": "Hoje compartilhei algumas dicas sobre React no meu blog! Falei sobre como utilizar hooks personalizados para gerenciar estado de forma eficiente e evitar repetições de código. Também mencionei a importância da organização dos componentes e como utilizar o Context API para melhorar a comunicação entre eles. Confira o post completo no meu site!",
+      "comments": [
+        {
+          "id": "cb8d90f1-aaf9-4b42-b815-0cabbe409082",
+          "comment": "novo comentário teste",
+          "publishedAt": "2025-03-26T00:08:33.122Z",
+          "like": 6,
+          "author": {
+            "name": "Mateus Santos",
+            "role": "Estudante",
+            "avatarUrl": "http://github.com/mateushsantos07.png"
+          }
+        }
+      ]
     },
     {
       "id": "2",
@@ -29,250 +42,6 @@
       },
       "publishedAt": "2025-03-16T10:15:00Z",
       "content": "Design de interfaces pensando na acessibilidade é essencial! Recentemente, realizei uma pesquisa sobre como melhorar a experiência de navegação para pessoas com deficiência visual e auditiva. Implementamos melhorias como contraste adequado, suporte a leitores de tela e navegação por teclado. Pequenas mudanças podem fazer uma grande diferença na inclusão digital!"
-    },
-    {
-      "id": "22222222",
-      "author": {
-        "name": "Mariana Oliveira",
-        "role": "UX Designer",
-        "avatarUrl": "https://github.com/niipvargas.png"
-      },
-      "publishedAt": "2025-03-16T10:15:00Z",
-      "content": "Design de interfaces pensando na acessibilidade é essencial! Recentemente, realizei uma pesquisa sobre como melhorar a experiência de navegação para pessoas com deficiência visual e auditiva. Implementamos melhorias como contraste adequado, suporte a leitores de tela e navegação por teclado. Pequenas mudanças podem fazer uma grande diferença na inclusão digital!",
-      "comments": [
-        {
-          "comment": "SFDGHSDFGSDFGSDFGasdasdas",
-          "publishedAt": "2025-03-24T22:27:11.927Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "content": "TESTANDO A TESTADEIRA DE TESTAGEMS PARA TESTE COM TESTE",
-      "publishedAt": "2025-03-19T00:51:22.003Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "6",
-      "content": "testet",
-      "publishedAt": "2025-03-19T01:02:33.631Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "7",
-      "content": "testset",
-      "publishedAt": "2025-03-20T22:14:52.989Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "8",
-      "content": "",
-      "publishedAt": "2025-03-20T22:16:47.869Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "9",
-      "content": "dfsadf",
-      "publishedAt": "2025-03-20T22:16:52.764Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "10",
-      "content": "teste",
-      "publishedAt": "2025-03-20T22:24:57.236Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "11",
-      "content": "teste",
-      "publishedAt": "2025-03-20T22:30:24.301Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "12",
-      "content": "TESTETE",
-      "publishedAt": "2025-03-20T22:59:06.643Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "13",
-      "content": "asdasdasdasdasd",
-      "publishedAt": "2025-03-20T23:50:53.706Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "14",
-      "content": "asdadasd",
-      "publishedAt": "2025-03-21T00:12:58.401Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      }
-    },
-    {
-      "id": "15",
-      "content": "testet",
-      "publishedAt": "2025-03-21T00:30:30.975Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      },
-      "comments": [
-        {
-          "comment": "asdfasdfasdf",
-          "publishedAt": "2025-03-24T22:27:24.454Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        }
-      ]
-    },
-    {
-      "id": "16",
-      "content": "teste 123",
-      "publishedAt": "2025-03-24T22:53:15.412Z",
-      "author": {
-        "name": "Mateus dos Santos",
-        "role": "Estudante",
-        "avatarUrl": "https://github.com/mateushsantos07.png"
-      },
-      "comments": [
-        {
-          "comment": "teste",
-          "publishedAt": "2025-03-24T22:53:19.452Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "testando mais uma vez",
-          "publishedAt": "2025-03-24T22:56:46.933Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "testest",
-          "publishedAt": "2025-03-24T23:16:26.595Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "teste",
-          "publishedAt": "2025-03-25T00:04:12.377Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "asdfasdfasdsaf",
-          "publishedAt": "2025-03-25T00:04:15.336Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "sfdgsdfgsdfg",
-          "publishedAt": "2025-03-25T00:04:23.184Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "testseafsdf",
-          "publishedAt": "2025-03-25T00:29:16.146Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "sadfgsadf",
-          "publishedAt": "2025-03-25T00:29:17.346Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "adfghafsdaf",
-          "publishedAt": "2025-03-25T00:29:18.609Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        },
-        {
-          "comment": "asdgasasdf",
-          "publishedAt": "2025-03-25T00:29:20.402Z",
-          "author": {
-            "name": "Mateus dos Santos",
-            "role": "Estudante",
-            "avatarUrl": "http://github.com/mateushsantos07.png"
-          }
-        }
-      ]
     }
   ]
 }

@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
 import Header from "@/components/Header";
-import "./styles.css"
+import "./styles.css";
 import Image from "next/image";
 
-import cover from '@/assets/cover.avif';
+import cover from "@/assets/cover.avif";
 import Avatar from "@/components/Avatar";
 import { PiPencilLineBold } from "react-icons/pi";
 import Post from "@/components/Post";
@@ -14,101 +14,101 @@ import TextareaCustom from "@/components/TextareaCustom";
 import ButtonCustom from "@/components/ButtonCustom";
 
 type Author = {
-    name: string;
-    role: string;
-    avatarUrl: string;
-}
+  name: string;
+  role: string;
+  avatarUrl: string;
+};
 
 type Comment = {
-    id: string;
-    author: Author;
-    comment: string;
-    publishedAt: Date
-}
+  id: string;
+  like: number;
+  author: Author;
+  comment: string;
+  publishedAt: Date;
+};
 
 type Post = {
-    id: string;
-    author: Author;
-    publishedAt: Date;
-    content: string;
-    comments: Comment[]
-}
+  id: string;
+  author: Author;
+  publishedAt: Date;
+  content: string;
+  comments: Comment[];
+};
 
 export default function Feed() {
-    const [posts, setPosts] = useState<Post[]>([]);
-    const [content, setContent] = useState<string>('');
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [content, setContent] = useState<string>("");
 
-    useEffect(() => {
-        loadPost();
-    }, [])
+  useEffect(() => {
+    loadPost();
+  }, []);
 
+  async function loadPost() {
+    const response = await axios.get("http://localhost:3001/posts");
+    const postSort = response.data.sort(
+      (a: any, b: any) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
 
-    async function loadPost() {
-        const response = await axios.get("http://localhost:3001/posts");
-        const postSort = response.data.sort((a: any, b: any) => (
-            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-        ))
+    setPosts(postSort);
+  }
 
-        setPosts(postSort)
-    }
+  async function handleCreatePost(event: FormEvent) {
+    event.preventDefault();
 
-    async function handleCreatePost(event: FormEvent) {
-        event.preventDefault()
+    const post = {
+      id: String(posts.length + 1),
+      content: content,
+      publishedAt: new Date().toISOString(),
+      author: {
+        name: "Mateus Santos",
+        role: "Estudante",
+        avatarUrl: "https://github.com/mateushsantos07.png",
+      },
+    };
+    await axios.post("http://localhost:3001/posts", post);
 
-        const post = {
-            id: String(posts.length + 1),
-            content: content,
-            publishedAt: new Date().toISOString(),
-            author: {
-                name: "Mateus Santos",
-                role: "Estudante",
-                avatarUrl: "https://github.com/mateushsantos07.png"
-            }
-        };
-        await axios.post("http://localhost:3001/posts", post);
+    await loadPost();
+    setContent("");
+  }
 
-        await loadPost();
-        setContent('');
-    }
+  return (
+    <div>
+      <Header />
+      <div className="container">
+        <aside className="sidebar">
+          <Image src={cover} alt="cover" className="cover" />
 
+          <div className="profile">
+            <Avatar src="https://github.com/mateushsantos07.png" hasBorder />
+            <strong>Mateus Santos</strong>
+            <span>Estudante</span>
 
-    return (
-        <div>
-            <Header />
-            <div className="container">
-                <aside className="sidebar">
-                    <Image src={cover} alt="cover" className="cover" />
+            <footer>
+              <button className="button-edit-profile">
+                <PiPencilLineBold />
+                Editar seu perfil
+              </button>
+            </footer>
+          </div>
+        </aside>
 
-                    <div className="profile">
-                        <Avatar src="https://github.com/mateushsantos07.png" hasBorder />
-                        <strong>Mateus Santos</strong>
-                        <span>Estudante</span>
+        <main className="main">
+          <form onSubmit={handleCreatePost} className="form-post">
+            <TextareaCustom
+              message={content}
+              setMessage={setContent}
+              title="O que você está pensando???"
+            />
 
-                        <footer>
-                            <button className="button-edit-profile">
-                                <PiPencilLineBold />
-                                Editar seu perfil
-                            </button>
-                        </footer>
-                    </div>
-                </aside>
+            <ButtonCustom />
+          </form>
 
-                <main className="main">
-                    <form onSubmit={handleCreatePost} className="form-post">
-                        <TextareaCustom
-                            message={content}
-                            setMessage={setContent}
-                            title="O que você está pensando???"
-                        />
-
-                        <ButtonCustom />
-                    </form>
-
-                    {posts.map(item => (
-                        <Post post={item} key={item.id} setPost={setPosts} />
-                    ))}
-                </main>
-            </div>
-        </div>
-    )
+          {posts.map((item) => (
+            <Post post={item} key={item.id} setPost={setPosts} />
+          ))}
+        </main>
+      </div>
+    </div>
+  );
 }
