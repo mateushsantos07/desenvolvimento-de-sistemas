@@ -21,3 +21,4 @@ describe('Componente Avatar', () => {
     })
 
 })
+
