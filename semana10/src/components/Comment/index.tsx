@@ -2,7 +2,7 @@ import { formatDistanceToNow } from 'date-fns';
 import Avatar from '../Avatar';
 import './styles.css';
 import { PiThumbsUp, PiTrash } from 'react-icons/pi';
-import { ptBR } from 'date-fns/locale';
+import { id, ptBR } from 'date-fns/locale';
 
 type Author = {
     name: string;
@@ -37,7 +37,7 @@ export default function Comment({ comment, handleDelete, handleLike }: CommentPr
                             <strong>{comment.author.name}</strong>
                             <time>{dateFormat}</time>
                         </div>
-                        <button title='Deletar comentário' onClick={(event) => handleDelete(event, comment.id)}>
+                        <button title='Deletar comentário' onClick={(event) => handleDelete(event, comment.id)} data-testid = {"button-delete"}>
                             <PiTrash size={24} />
                         </button>
                     </header>
@@ -46,7 +46,7 @@ export default function Comment({ comment, handleDelete, handleLike }: CommentPr
                 <footer>
                     <button onClick={(event) => handleLike(event, comment.id)}>
                         <PiThumbsUp />
-                        Apludir <span>{comment.like}</span>
+                        Aplaudir <span>{comment.like}</span>
                     </button>
                 </footer>
             </div>
