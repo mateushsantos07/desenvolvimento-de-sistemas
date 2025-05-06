@@ -24,7 +24,7 @@ export async function taskController(app: FastifyInstance) {
         return task;
     });
 
-    app.patch("/task/:id", (request, reply) =>  {
+    app.patch("/task/:id/completed", (request, reply) =>  {
         // CAPTURA INFORMAÇÃO
         const { id } = request.body as { id: string }
         try {
@@ -47,5 +47,12 @@ export async function taskController(app: FastifyInstance) {
         }catch(error: any) {
             return reply.code(404).send({ error: error.message });
         }
+    })
+
+    app.delete("/task/:id", (req: FastifyRequest, rep: FastifyReply) => {
+        const { id } = req.params as { id: string}
+        taskService.updateCompleted(id) //não pega em nenhuma variável porque não quer retorno
+
+        return rep.code(200);
     })
 }
