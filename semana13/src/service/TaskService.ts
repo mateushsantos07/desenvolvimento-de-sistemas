@@ -23,17 +23,25 @@ class TaskService {
         return task ? task : null
     }
 
-    public updateCompleted(id: string, completed: boolean) {
+    public updateCompleted(id: string){
         const task = this.getById(id);
         if(task === null){
-            throw new Error("Tarefa não encontrada.")
-        } 
+            throw new Error("Tarefa não foi encontrada.")
+        }
 
-        task.setCompleted(completed);
+        task.setCompleted(); 
         return task;
     }
 
+    public updateText(id: string, text: string){
+        const task = this.getById(id);
+        if(task === null){
+            throw new Error("Tarefa não foi encontrada.")
+        }
+
+        task.setText(text);
+        return task;
+    }
 }
 
 export const taskService = new TaskService();
-

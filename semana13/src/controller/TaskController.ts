@@ -27,12 +27,25 @@ export async function taskController(app: FastifyInstance) {
     app.patch("/task/:id", (request, reply) =>  {
         // CAPTURA INFORMAÇÃO
         const { id } = request.body as { id: string }
-        const { completed } = request.body as { completed:boolean }
-        
-        // REPASSA INFO RECEBIDA E RECEBE INFORMAÇÃO PROCESSADA
-        const task = taskService.updateCompleted(id, completed);
+        try {
+            // RAPASSA INFO RECEBIDA E RECEBE INFORMAÇÃO PROCESSADA
+            const task = taskService.updateCompleted(id);
+            // RETORNA UMA RESPONSE PARA QUEM CHAMOU A ROTA
+            return reply.code(200).send(task);
+        }catch(error: any) {
+            return reply.code(404).send({ error: error.message})
+        }
+    });
 
-        // RETORNA UMA RESPONSE PARA QUEM CHAMOU A ROTA
-        return reply.code(200).send(task);
+    app.patch("/task/:id/text", (request, reply) => {
+        const { id } = request.params as { id: string };
+        const { text } = request.body as { text: string };
+
+        try {
+            const task = taskService.updateText(id, text);
+            return reply.code(200).send(task);
+        }catch(error: any) {
+            return reply.code(404).send({ error: error.message });
+        }
     })
 }
