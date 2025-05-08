@@ -43,7 +43,7 @@ class TaskService {
         return task;
     }
 
-    public delete(id: string) {
+    public deleteTask(id: string) {
         const task = this.getById(id);
         if(task === null){
             throw new Error("Tarefa não encontrada.")
@@ -52,6 +52,7 @@ class TaskService {
         const taskFilter = this.taskList.filter(task => task.getId() !== id)
         this.taskList = taskFilter
     }
+
 }
 
 export const taskService = new TaskService();

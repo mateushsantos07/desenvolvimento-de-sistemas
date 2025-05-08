@@ -1,32 +1,33 @@
-import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
+import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { taskService } from "../service/TaskService";
 
 export async function taskController(app: FastifyInstance) {
     app.post("/task", (request, reply) => {
-    const body = request.body as { text: string };
+        const body = request.body as { text: string };
 
-    try {
-        taskService.create(body.text);
-        return reply.code(201).send();
-    } catch (error: any) {
-        return reply.code(409).send({ erro: error.message });
-    }
-});
+        try {
+            taskService.create(body.text);
+            return reply.code(201).send();
+        } catch (error: any) {
+            return reply.code(409).send({ erro: error.message })
+        }
+    })
 
     app.get("/task", (_, reply) => {
         const list = taskService.getAll();
         return reply.code(200).send(list);
-    });
+    })
 
     app.get("/task/:id", (request: FastifyRequest, reply: FastifyReply) => {
-        const { id } = request.params as { id: string };
-        const task = taskService.getById(id);
-        return task;
-    });
+       const { id } = request.params as { id: string };
+       const task = taskService.getById(id);
+       return task;
+    })
 
-    app.patch("/task/:id/completed", (request, reply) =>  {
+    app.patch("/task/:id/completed", (request, reply) => {
         // CAPTURA INFORMAÇÃO
-        const { id } = request.body as { id: string }
+        const { id } = request.params as { id: string };
+        
         try {
             // RAPASSA INFO RECEBIDA E RECEBE INFORMAÇÃO PROCESSADA
             const task = taskService.updateCompleted(id);
@@ -49,10 +50,9 @@ export async function taskController(app: FastifyInstance) {
         }
     })
 
-    app.delete("/task/:id", (req: FastifyRequest, rep: FastifyReply) => {
-        const { id } = req.params as { id: string}
-        taskService.updateCompleted(id) //não pega em nenhuma variável porque não quer retorno
-
-        return rep.code(200);
+    app.delete('/task/:id', (request, reply) => {
+        const { id } = request.params as { id: string}
+        taskService.deleteTask(id)
+        return reply.code(200).send();
     })
 }
