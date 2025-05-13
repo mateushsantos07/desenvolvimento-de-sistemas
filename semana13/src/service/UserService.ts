@@ -1,6 +1,7 @@
 import { User, Task as UserPrisma } from "@prisma/client";
 import { prisma } from "../prisma/client";
 import { compare, hash } from "bcryptjs";
+import { FastifyInstance } from "fastify";
 
 class UserService {
     public async register( { name, email, password, birthDate }: CreateUserType ): Promise<void> {
@@ -28,8 +29,7 @@ class UserService {
         await prisma.user.create({ data: user });
     }
 
-    public async login({ email, password }: LoginType): Promise<string | null> {
-        
+    public async login({ email, password }: LoginType, app: FastifyInstance): Promise<string | null> {  
         const user = await prisma.user.findUnique({ 
             where: { email: email }
         })
@@ -47,7 +47,9 @@ class UserService {
             id: user.id,
             name: user.email,
             email: user.email,
-            birthDate: user.birthDate
+            birthDate: user.birthDate,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt
         });
     }
 }

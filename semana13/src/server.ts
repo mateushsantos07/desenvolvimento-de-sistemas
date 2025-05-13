@@ -2,6 +2,7 @@ import fastify from "fastify";
 import { taskController } from "./controller/TaskController";
 import cors from "@fastify/cors";
 import { userController } from "./controller/UserController";
+import authJwt from "./middleware/authJwt";
 
 const app = fastify();
 
@@ -10,6 +11,7 @@ app.register(cors, {
     methods: ["GET", "POST", "PATCH", "DELETE"]
 });
 
+app.register(authJwt)
 app.register(taskController);
 app.register(userController)
 
