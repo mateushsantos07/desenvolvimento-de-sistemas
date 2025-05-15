@@ -1,6 +1,6 @@
-import fp from "fastify-plugin"
+import fp from 'fastify-plugin';
 
-export default fp(async (fastify) =>{
+export default fp(async (fastify) => {
     fastify.register(require("fastify-jwt"), {
         secret: process.env.JWT_SECRET
     })
@@ -9,7 +9,7 @@ export default fp(async (fastify) =>{
         try {
             await request.jwtVerify();
         }catch(err){
-            return reply.status(401).send({error: "Não autorizado"})
+            return reply.status(401).send({ error: "Não Autorizado"})
         }
     })
-})
+});

@@ -1,6 +1,6 @@
-import "fastify"
-import { FastifyReply } from "fastify";
-import { FastifyJWT } from "fastify-jwt";
+import 'fastify'
+import { FastifyReply } from 'fastify';
+import { FastifyJWT } from 'fastify-jwt';
 
 declare module 'fastify' {
     interface FastifyRequest {
@@ -14,7 +14,7 @@ declare module 'fastify' {
         },
         jwtVerify(): Promise<void>
     }
-    
+
     interface FastifyInstance {
         authenticate(request: FastifyRequest, reply: FastifyReply),
         jwt: {

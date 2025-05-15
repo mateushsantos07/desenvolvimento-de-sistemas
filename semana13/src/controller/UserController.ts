@@ -1,8 +1,10 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { userService } from "../service/UserService";
+import { loginSchema, registerSchema } from "../config/schema/auth.schema";
 
 export async function userController(app: FastifyInstance) {
-    app.post("/user/register", async (request: FastifyRequest, reply: FastifyReply) => {
+
+    app.post("/user/register", { schema: registerSchema }, async (request: FastifyRequest, reply: FastifyReply) => {
         const body = request.body as CreateUserType;
 
         try {
@@ -13,8 +15,8 @@ export async function userController(app: FastifyInstance) {
         }
     })
 
-    app.post("/user/login", async (request: FastifyRequest, reply: FastifyReply) => {
-        const body = request.body as LoginType
+    app.post("/user/login", { schema: loginSchema }, async (request: FastifyRequest, reply: FastifyReply) => {
+        const body = request.body as LoginType;
 
         try {
             const token = await userService.login(body, app)
@@ -23,4 +25,5 @@ export async function userController(app: FastifyInstance) {
             return reply.code(401).send({ erro: error.message })
         }
     })
-} 
+
+}
