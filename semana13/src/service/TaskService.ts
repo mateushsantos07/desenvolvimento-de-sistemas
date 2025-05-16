@@ -2,10 +2,11 @@ import { Task as TaskPrisma } from "@prisma/client";
 import { prisma } from "../prisma/client";
 
 class TaskService {
-    public async create(text: string): Promise<void> {
+    public async create(text: string, userId: string): Promise<void> {
         const task: TaskPrisma = {
             id: crypto.randomUUID(),
             text: text,
+            userId: userId,
             completed: false,
             createdAt: new Date(),
             updatedAt: new Date()
@@ -14,9 +15,10 @@ class TaskService {
         await prisma.task.create({ data: task });
     }
 
-    public async getAll(): Promise<TaskPrisma[]> {
+    public async getAll(userId: string): Promise<TaskPrisma[]> {
         return await prisma.task.findMany({
             orderBy: { createdAt: 'desc' },
+            where: { userId: userId }
         });
     }
 
