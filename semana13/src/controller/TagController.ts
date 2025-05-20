@@ -14,4 +14,15 @@ export async function tagController(app: FastifyInstance) {
             return reply.code(409).send({ erro: error.message })
         }
     })
+
+    app.post("/tag/relation", async (request: FastifyRequest, reply: FastifyReply) => {
+        const { taskId, tagId } = request.body as { taskId: string, tagId: string }
+
+        try {
+            await tagService.relation(taskId, tagId);
+            return reply.code(200).send();
+        } catch (error: any) {
+            return reply.code(400).send({ error: error.message })
+        }
+    })
 }

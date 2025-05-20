@@ -16,10 +16,28 @@ class TaskService {
     }
 
     public async getAll(userId: string): Promise<TaskPrisma[]> {
-        return await prisma.task.findMany({
+        const tasks = await prisma.task.findMany({
             orderBy: { createdAt: 'desc' },
-            where: { userId: userId }
+            where: { userId: userId },
+            include: {
+                taskTag: {
+                    include: {
+                        tag: true
+                    }
+                }
+            }
         });
+
+        const tasksMap = tasks.map(task => ({
+            id: task.id,
+            text: task.text,
+            completed: task.completed,
+            createdAt: task.createdAt,
+            updatedAt: task.updatedAt,
+            userId: task.userId,
+            tags: task.taskTag.map(tag => tag.tag)
+        } as any))
+        return tasksMap;
     }
 
     public async updateCompleted(id: string): Promise<TaskPrisma> {
@@ -40,10 +58,9 @@ class TaskService {
     }
 
     public async deleteTask(id: string) {
-        return await prisma.task.delete({ where: { id: id }})
+        return await prisma.task.delete({ where: { id: id } })
     }
 
 }
 
 export const taskService = new TaskService();
-

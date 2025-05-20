@@ -13,7 +13,24 @@ class TagService {
         await prisma.tag.create({ data: tag });
     }
 
+    public async relation(taskId: string, tagId: string): Promise<void> {
+        const task = await prisma.task.findUnique({ where: { id: taskId } })
+        if (!task) {
+            throw new Error("Tarefa informada não existe...")
+        }
+
+        const tag = await prisma.tag.findUnique({ where: { id: tagId } })
+        if (!tag) {
+            throw new Error("Tag informada não existe...")
+        }
+
+        await prisma.taskTag.createMany({
+            data: {
+                taskId: taskId,
+                tagId: tagId
+            }
+        })
+    }
 }
 
 export const tagService = new TagService();
-
